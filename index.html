@@ -342,8 +342,8 @@ snail-race {
 
     </style>
     <link rel=stylesheet href=evolution.css>
-    <script src=lower_title_to_id.js></script>
-    <script src=id_to_title.js></script>
+    <script src=lower_title_to_id.js?v=2></script>
+    <script src=id_to_title.js?v=2></script>
     <script src=mononyms.js></script>
     <script src=parent.js></script>
     <script src=eggs.js></script>
@@ -406,7 +406,7 @@ function appendp(element, text) {
 
 function attempt() {
     var verbatim_guess = guessbox.value;
-    var guess = guessbox.value.trim().toLowerCase().replaceAll("-"," ").replaceAll('’',"'").replaceAll(/ +/g, ' ');
+    var guess = guessbox.value.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replaceAll("-"," ").replaceAll('’',"'").replaceAll(/ +/g, ' ');
     if (!guess) { return; }
     guesses.push(guess);
     console.log(guess);
